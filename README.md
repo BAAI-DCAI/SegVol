@@ -1,1 +1,1 @@
-# Med3D
+# SegVol: Universal and Interactive Volumetric Medical Image Segmentation
