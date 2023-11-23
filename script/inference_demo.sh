@@ -1,6 +1,6 @@
-export segvol_ckpt="/zhaobai46a01/code/MedSAM-main/work_dir/MedSAM-ViT-B-20231103-0933/medsam_model_e270.pth"
-export clip_dir="/zhaobai46a01/pretrain_mods/clip"
-export work_dir="/zhaobai46a01/code/SegVol/work_dir"
+export segvol_ckpt="path/to/segvol_model_e270.pth"
+export clip_dir="path/to/clip"
+export work_dir="path/to/logdir"
 export demo_config_path="./config/config_demo.json"
 
 CUDA_VISIBLE_DEVICES=0 python inference_demo.py \
