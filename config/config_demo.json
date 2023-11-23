@@ -1,0 +1,8 @@
+{
+    "dataset_name": "AbdomenCT-1k",
+    "categories": ["liver", "kidney", "spleen", "pancreas"],
+    "demo_case": {
+        "ct_path": "/zhaobai46a01/data/medsam/data_tmp/tmp-AbdomenCT-1k/ct/Case_00001_0000.nii.gz",
+        "gt_path": "/zhaobai46a01/data/medsam/data_tmp/tmp-AbdomenCT-1k/gt/Case_00001.nii.gz" 
+    }
+}
