@@ -34,7 +34,7 @@ pip install matplotlib
 
     - `$work_dir`: any path of folder you want to save the log files and visualizaion results.
 
-4. Finally, you can control the prompt type, zoom-in-zoom-out mechanism and visualizaion process [here](https://github.com/BAAI-DCAI/SegVol/blob/35f3ff9c943a74f630e6948051a1fe21aaba91bc/inference_demo.py#L208C11-L208C11).
+4. Finally, you can control the **prompt type**, **zoom-in-zoom-out mechanism** and **visualizaion switch** [here](https://github.com/BAAI-DCAI/SegVol/blob/35f3ff9c943a74f630e6948051a1fe21aaba91bc/inference_demo.py#L208C11-L208C11).
 5. Now, just run `bash script/inference_demo.sh` to infer your demo case.
 
 ## Citation
