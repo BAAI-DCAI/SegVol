@@ -41,16 +41,19 @@ def draw_result(category, image, bboxes, points, logits, gt3D, spatial_size, wor
         # orginal img
         fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
         ax1.imshow(img_2d, cmap='gray')
+        ax1.set_title('Image with prompt') 
         ax1.axis('off')
 
         # gt
         ax2.imshow(img_2d, cmap='gray')
         show_mask(label_2d, ax2)
+        ax2.set_title('Ground truth') 
         ax2.axis('off')
 
         # preds
         ax3.imshow(img_2d, cmap='gray')
         show_mask(preds_2d, ax3)
+        ax3.set_title('Prediction') 
         ax3.axis('off')
 
         # boxes
