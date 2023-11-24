@@ -22,7 +22,7 @@ pip install 'monai[all]==0.9.0'
 pip install einops==0.6.1
 pip install transformers==4.18.0
 ``` 
-### Config script
+### Config and run demo script
 Please download the demo dataset: [AbdomenCT-1K](https://github.com/JunMa11/AbdomenCT-1K). Set CT path and Ground Truth path of a case in the [config_demo.json](https://github.com/BAAI-DCAI/SegVol/blob/main/config/config_demo.json).
 
 After that, config the [inference_demo.sh](https://github.com/BAAI-DCAI/SegVol/blob/main/script/inference_demo.sh) file for execution:
