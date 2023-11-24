@@ -50,7 +50,7 @@ If you find this repository helpful, please consider citing:
 }
 ```
 
-## Acknowlegements
+## Acknowledgement
 Thanks for the following amazing works:
 
 [HuggingFace](https://huggingface.co/).
