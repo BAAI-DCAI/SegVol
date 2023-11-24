@@ -2,11 +2,13 @@
 This repo is the official implementation of [SegVol: Universal and Interactive Volumetric Medical Image Segmentation](https://arxiv.org/abs/2311.13385).
 
 ## News
-*The first edition of our paper has been uploaded to arXiv.*
+(2023.11.24) *You can download weight files of SegVol and ViT(CTs pre-train) [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link).*
 
-*The inference demo code has been uploaded.*
+(2023.11.23) *The brief introduction and instruction are comming soon in this week.*
 
-*The brief introduction and instruction are comming soon in this week.*
+(2023.11.23) *The inference demo code has been uploaded.*
+
+(2023.11.22) *The first edition of our paper has been uploaded to arXiv.*
 
 ## Introduction
 The SegVol is a universal and interactive model for volumetric medical image segmentation. SegVol accepts **point**, **box** and **text** prompt while output volumetric segmentation. By training on 90k unlabeled Computed Tomography (CT) volumes and 6k labeled CTs, this foundation model supports the segmentation of over 200 anatomical categories.
@@ -27,7 +29,7 @@ Please download the demo dataset: [AbdomenCT-1K](https://github.com/JunMa11/Abdo
 
 After that, config the [inference_demo.sh](https://github.com/BAAI-DCAI/SegVol/blob/main/script/inference_demo.sh) file for execution:
 
-- `$segvol_ckpt`: the path of SegVol's checkpoint (release later).
+- `$segvol_ckpt`: the path of SegVol's checkpoint (Download from [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link)).
 
 - `$clip_dir`: the path of CLIP Text model folder (clip-vit-base-patch32). We recommand you to download it from [HuggingFace CLIP repo](https://huggingface.co/openai/clip-vit-base-patch32/tree/main) in offline environment. If your device is online, you can modify [the code](https://github.com/BAAI-DCAI/SegVol/blob/35f3ff9c943a74f630e6948051a1fe21aaba91bc/network/model.py#L69C22-L69C22) to make it easier to run.
 
