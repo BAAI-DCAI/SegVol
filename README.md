@@ -27,11 +27,11 @@ Please download the demo dataset: [AbdomenCT-1K](https://github.com/JunMa11/Abdo
 
 After that, config the [inference_demo.sh](https://github.com/BAAI-DCAI/SegVol/blob/main/script/inference_demo.sh) file for execution:
 
-`$segvol_ckpt`: the path of SegVol's checkpoint (release later).
+- `$segvol_ckpt`: the path of SegVol's checkpoint (release later).
 
-`$clip_dir`: the path of CLIP Text model folder (clip-vit-base-patch32). We recommand you to download it from [HuggingFace CLIP repo](https://huggingface.co/openai/clip-vit-base-patch32/tree/main) in offline environment. If your device is online, you can modify [the code](https://github.com/BAAI-DCAI/SegVol/blob/35f3ff9c943a74f630e6948051a1fe21aaba91bc/network/model.py#L69C22-L69C22) to make it easier to run.
+- `$clip_dir`: the path of CLIP Text model folder (clip-vit-base-patch32). We recommand you to download it from [HuggingFace CLIP repo](https://huggingface.co/openai/clip-vit-base-patch32/tree/main) in offline environment. If your device is online, you can modify [the code](https://github.com/BAAI-DCAI/SegVol/blob/35f3ff9c943a74f630e6948051a1fe21aaba91bc/network/model.py#L69C22-L69C22) to make it easier to run.
 
-`$work_dir`: any folder you want to save the log files and visualizaion results.
+- `$work_dir`: any folder you want to save the log files and visualizaion results.
 
 Finally, you can control the prompt type, zoom-in-zoomout mechanism and visualizaion process at [here](https://github.com/BAAI-DCAI/SegVol/blob/35f3ff9c943a74f630e6948051a1fe21aaba91bc/inference_demo.py#L208C11-L208C11).
 
