@@ -35,6 +35,8 @@ After that, config the [inference_demo.sh](https://github.com/BAAI-DCAI/SegVol/b
 
 Finally, you can control the prompt type, zoom-in-zoomout mechanism and visualizaion process at [here](https://github.com/BAAI-DCAI/SegVol/blob/35f3ff9c943a74f630e6948051a1fe21aaba91bc/inference_demo.py#L208C11-L208C11).
 
+Now, just run `bash script/inference_demo.sh` to infer your demo case.
+
 ## Citation
 If you find this repository helpful, please consider citing:
 ```
