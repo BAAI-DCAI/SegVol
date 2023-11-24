@@ -151,7 +151,7 @@ def sliding_window_inference(
 
     """
     print('sliding window inference for ROI')
-    organs = kwargs['organs']
+    text = kwargs['text']
     use_box = kwargs['use_box']
     use_point = kwargs['use_point']
     assert not (use_box and use_point)
@@ -213,7 +213,6 @@ def sliding_window_inference(
 
     # for each patch
     for slice_g in tqdm(range(0, total_slices, sw_batch_size)) if progress else range(0, total_slices, sw_batch_size):
-        # print(f'{organs}: slice-{slice_g}')
         slice_range = range(slice_g, min(slice_g + sw_batch_size, total_slices))
         unravel_slice = [
             [slice(int(idx / num_win), int(idx / num_win) + 1), slice(None)] + list(slices[idx % num_win])
@@ -237,7 +236,7 @@ def sliding_window_inference(
             else:
                 pseudo_label = torch.cat([global_preds[win_slice] for win_slice in unravel_slice]).to(sw_device)
                 boxes = generate_box(pseudo_label.squeeze()).unsqueeze(0).float().cuda()
-        seg_prob_out = predictor(window_data, organs, boxes, points)  # batched patch segmentation
+        seg_prob_out = predictor(window_data, text, boxes, points)  # batched patch segmentation
         #############
         # convert seg_prob_out to tuple seg_prob_tuple, this does not allocate new memory.
         seg_prob_tuple: Tuple[torch.Tensor, ...]

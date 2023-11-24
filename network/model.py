@@ -23,7 +23,7 @@ class SegVol(nn.Module):
         self.feat_shape = np.array(roi_size)/np.array(patch_size)
         self.test_mode = test_mode
 
-    def forward(self, image, organs=None, boxes=None, points=None, **kwargs):
+    def forward(self, image, text=None, boxes=None, points=None, **kwargs):
         bs = image.shape[0]
         img_shape = (image.shape[2], image.shape[3], image.shape[4])
         image_embedding, _ = self.image_encoder(image)
@@ -31,17 +31,17 @@ class SegVol(nn.Module):
             int(self.feat_shape[0]), int(self.feat_shape[1]), int(self.feat_shape[2]))
         # test mode
         if self.test_mode:
-            return self.forward_decoder(image_embedding, img_shape, organs, boxes, points)
+            return self.forward_decoder(image_embedding, img_shape, text, boxes, points)
         # train mode
         # future release
 
-    def forward_decoder(self, image_embedding, img_shape, organs=None, boxes=None, points=None):
+    def forward_decoder(self, image_embedding, img_shape, text=None, boxes=None, points=None):
         with torch.no_grad():
             if boxes is not None:
                 if len(boxes.shape) == 2:
                     boxes = boxes[:, None, :] # (B, 1, 6)
-            if organs is not None:
-                text_embedding = self.text_encoder(organs)  # (B, 768)
+            if text is not None:
+                text_embedding = self.text_encoder(text)  # (B, 768)
             else:
                 text_embedding = None
         sparse_embeddings, dense_embeddings = self.prompt_encoder(
@@ -80,12 +80,12 @@ class TextEncoder(nn.Module):
             tokens[key] = tokens[key].cuda()
         return tokens
     
-    def forward(self, organs):
-        if organs is None:
+    def forward(self, text):
+        if text is None:
             return None
-        if type(organs) is str:
-            organs = [organs]
-        tokens = self.organ2tokens(organs)
+        if type(text) is str:
+            text = [text]
+        tokens = self.organ2tokens(text)
         clip_outputs = self.clip_text_model(**tokens)
         text_embedding = clip_outputs.pooler_output
         text_embedding = self.dim_align(text_embedding)

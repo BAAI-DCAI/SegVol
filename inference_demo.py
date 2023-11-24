@@ -44,7 +44,7 @@ def dice_score(preds, labels):  # on GPU
         target = target.cpu()
     return dice
 
-def zoom_in_zoom_out(args, medsam_model, image, image_resize, gt3D, gt3D_resize, categories=None):
+def zoom_in_zoom_out(args, segvol_model, image, image_resize, gt3D, gt3D_resize, categories=None):
     logits_labels_record = {}
     image_single_resize = image_resize
     image_single = image[0,0]
@@ -58,7 +58,7 @@ def zoom_in_zoom_out(args, medsam_model, image, image_resize, gt3D, gt3D_resize,
             print('No object, skip')
             continue
         # generate prompts
-        organ_single = categories[item_idx] if args.use_text_prompt else None
+        text_single = categories[item_idx] if args.use_text_prompt else None
         if categories is not None: print(f'inference |{categories[item_idx]}| target...')
         points_single = None
         box_single = None
@@ -73,10 +73,10 @@ def zoom_in_zoom_out(args, medsam_model, image, image_resize, gt3D, gt3D_resize,
         ####################
         # zoom-out inference:
         print('--- zoom out inference ---')
-        print(f'use text-prompt [{organ_single!=None}], use box-prompt [{box_single!=None}], use point-prompt [{points_single!=None}]')
+        print(f'use text-prompt [{text_single!=None}], use box-prompt [{box_single!=None}], use point-prompt [{points_single!=None}]')
         with torch.no_grad():
-            logits_global_single = medsam_model(image_single_resize.cuda(),
-                                                organs=organ_single, 
+            logits_global_single = segvol_model(image_single_resize.cuda(),
+                                                text=text_single, 
                                                 boxes=box_single, 
                                                 points=points_single)
         
@@ -137,8 +137,8 @@ def zoom_in_zoom_out(args, medsam_model, image, image_resize, gt3D, gt3D_resize,
         with torch.no_grad():
             logits_single_cropped = sliding_window_inference(
                     image_single_cropped.cuda(), prompt_reflection,
-                    args.spatial_size, 1, medsam_model, args.infer_overlap,
-                    organs=organ_single,
+                    args.spatial_size, 1, segvol_model, args.infer_overlap,
+                    text=text_single,
                     use_box=args.use_box_prompt,
                     use_point=args.use_point_prompt,
                 )
@@ -191,7 +191,6 @@ def main(args):
 
     # load param
     if os.path.isfile(args.resume):
-        ## Map model to be loaded to specified single GPU
         loc = 'cuda:{}'.format(gpu)
         checkpoint = torch.load(args.resume, map_location=loc)
         segvol_model.load_state_dict(checkpoint['model'], strict=True)
@@ -203,7 +202,7 @@ def main(args):
     ct_path, gt_path, categories = config_dict['demo_case']['ct_path'], config_dict['demo_case']['gt_path'], config_dict['categories']
 
     # preprocess for data
-    data_item = process_ct_gt(ct_path, gt_path, categories, args.spatial_size)   # keys: image, label
+    data_item = process_ct_gt(ct_path, gt_path, categories, args.spatial_size)
 
     # seg config for prompt & zoom-in-zoom-out
     args.use_zoom_in = True
