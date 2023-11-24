@@ -23,6 +23,7 @@ The [pytorch v1.11.0](https://pytorch.org/get-started/previous-versions/) (or hi
 pip install 'monai[all]==0.9.0'
 pip install einops==0.6.1
 pip install transformers==4.18.0
+pip install matplotlib
 ``` 
 ### Config and run demo script
 1. You can download the demo case [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link), or download the whole demo dataset  [AbdomenCT-1K](https://github.com/JunMa11/AbdomenCT-1K) and choose any demo case you want.
