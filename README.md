@@ -17,7 +17,7 @@ We will release SegVol's **inference code**, **training code**, **model params**
 
 ## Usage
 ### Requirements
-The [pytorch v1.11.0](https://pytorch.org/get-started/previous-versions/) (or higher virsion) is needed first. Following install MONAI, einops and transformers using commands:
+The [pytorch v1.11.0](https://pytorch.org/get-started/previous-versions/) (or higher virsion) is needed first. Following install key requirements using commands:
 
 ```
 pip install 'monai[all]==0.9.0'
