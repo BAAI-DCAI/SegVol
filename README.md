@@ -29,7 +29,7 @@ Please download the demo dataset: [AbdomenCT-1K](https://github.com/JunMa11/Abdo
 
 After that, config the [inference_demo.sh](https://github.com/BAAI-DCAI/SegVol/blob/main/script/inference_demo.sh) file for execution:
 
-- `$segvol_ckpt`: the path of SegVol's checkpoint (release later).
+- `$segvol_ckpt`: the path of SegVol's checkpoint (Download from [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link)).
 
 - `$clip_dir`: the path of CLIP Text model folder (clip-vit-base-patch32). We recommand you to download it from [HuggingFace CLIP repo](https://huggingface.co/openai/clip-vit-base-patch32/tree/main) in offline environment. If your device is online, you can modify [the code](https://github.com/BAAI-DCAI/SegVol/blob/35f3ff9c943a74f630e6948051a1fe21aaba91bc/network/model.py#L69C22-L69C22) to make it easier to run.
 
