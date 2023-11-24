@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-from transformers import AutoTokenizer, CLIPTextModel
+from transformers import AutoTokenizer, CLIPTextModel, CLIPTextConfig
 
 #%% set up model
 class SegVol(nn.Module):
@@ -66,7 +66,8 @@ class SegVol(nn.Module):
 class TextEncoder(nn.Module):
     def __init__(self, clip_ckpt):
         super().__init__()
-        self.clip_text_model = CLIPTextModel.from_pretrained(clip_ckpt)
+        config = CLIPTextConfig()
+        self.clip_text_model = CLIPTextModel(config)
         self.tokenizer = AutoTokenizer.from_pretrained(clip_ckpt)
         self.dim_align = nn.Linear(512, 768)
         # freeze text encoder

@@ -15,13 +15,13 @@ def set_parse():
     parser = argparse.ArgumentParser()
     parser.add_argument("--test_mode", default=True, type=bool)
     parser.add_argument("--resume", type = str, default = '')
-    parser.add_argument("--clip_ckpt", type = str, default = '', required=True)
     parser.add_argument("-infer_overlap", default=0.5, type=float, help="sliding window inference overlap")
     parser.add_argument("-spatial_size", default=(32, 256, 256), type=tuple)
     parser.add_argument("-patch_size", default=(4, 16, 16), type=tuple)
     parser.add_argument('-work_dir', type=str, default='./work_dir')
     ### demo
     parser.add_argument('--demo_config', type=str, required=True)
+    parser.add_argument("--clip_ckpt", type = str, default = './config/clip')
     args = parser.parse_args()
     return args
 
@@ -191,6 +191,7 @@ def main(args):
 
     # load param
     if os.path.isfile(args.resume):
+        ## Map model to be loaded to specified single GPU
         loc = 'cuda:{}'.format(gpu)
         checkpoint = torch.load(args.resume, map_location=loc)
         segvol_model.load_state_dict(checkpoint['model'], strict=True)
@@ -202,7 +203,7 @@ def main(args):
     ct_path, gt_path, categories = config_dict['demo_case']['ct_path'], config_dict['demo_case']['gt_path'], config_dict['categories']
 
     # preprocess for data
-    data_item = process_ct_gt(ct_path, gt_path, categories, args.spatial_size)
+    data_item = process_ct_gt(ct_path, gt_path, categories, args.spatial_size)   # keys: image, label
 
     # seg config for prompt & zoom-in-zoom-out
     args.use_zoom_in = True
