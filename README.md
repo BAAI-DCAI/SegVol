@@ -1,8 +1,8 @@
 # SegVol: Universal and Interactive Volumetric Medical Image Segmentation
 This repo is the official implementation of [SegVol: Universal and Interactive Volumetric Medical Image Segmentation](https://arxiv.org/abs/2311.13385).
 
-## News
-(2023.11.24) *You can download weight files of SegVol and ViT(CTs pre-train) [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link).* ✨
+## News🚀
+(2023.11.24) *You can download weight files of SegVol and ViT(CTs pre-train) [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link).* 🔥
 
 (2023.11.23) *The brief introduction and instruction have been uploaded.*
 
@@ -14,6 +14,8 @@ This repo is the official implementation of [SegVol: Universal and Interactive V
 The SegVol is a universal and interactive model for volumetric medical image segmentation. SegVol accepts **point**, **box** and **text** prompt while output volumetric segmentation. By training on 90k unlabeled Computed Tomography (CT) volumes and 6k labeled CTs, this foundation model supports the segmentation of over 200 anatomical categories.
 
 We will release SegVol's **inference code**, **training code**, **model params** and **ViT pre-training params** (pre-training is performed over 2,000 epochs on 96k  CTs). 
+
+![model](https://github.com/BAAI-DCAI/SegVol/blob/main/asset/model.png)
 
 ## Usage
 ### Requirements
