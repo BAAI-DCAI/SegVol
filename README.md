@@ -4,7 +4,7 @@ This repo is the official implementation of [SegVol: Universal and Interactive V
 ## News
 (2023.11.24) *You can download weight files of SegVol and ViT(CTs pre-train) [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link).* ✨
 
-(2023.11.23) *The brief introduction and instruction are comming soon in this week.*
+(2023.11.23) *The brief introduction and instruction have been uploaded.*
 
 (2023.11.23) *The inference demo code has been uploaded.*
 
