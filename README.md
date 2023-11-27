@@ -19,7 +19,7 @@ We will release SegVol's **inference code**, **training code**, **model params**
 
 ## Usage
 ### Requirements
-The [pytorch v1.11.0](https://pytorch.org/get-started/previous-versions/) (or higher virsion) is needed first. Following install key requirements using commands:
+The [pytorch v1.11.0](https://pytorch.org/get-started/previous-versions/) (or higher version) is needed first. Following install key requirements using commands:
 
 ```
 pip install 'monai[all]==0.9.0'
@@ -42,13 +42,11 @@ pip install matplotlib
 ## Citation
 If you find this repository helpful, please consider citing:
 ```
-@misc{du2023segvol,
-      title={SegVol: Universal and Interactive Volumetric Medical Image Segmentation}, 
-      author={Yuxin Du and Fan Bai and Tiejun Huang and Bo Zhao},
-      year={2023},
-      eprint={2311.13385},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@article{du2023segvol,
+  title={SegVol: Universal and Interactive Volumetric Medical Image Segmentation},
+  author={Du, Yuxin and Bai, Fan and Huang, Tiejun and Zhao, Bo},
+  journal={arXiv preprint arXiv:2311.13385},
+  year={2023}
 }
 ```
 
