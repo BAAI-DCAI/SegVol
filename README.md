@@ -41,7 +41,7 @@ pip install matplotlib
 4. Finally, you can control the **prompt type**, **zoom-in-zoom-out mechanism** and **visualizaion switch** [here](https://github.com/BAAI-DCAI/SegVol/blob/35f3ff9c943a74f630e6948051a1fe21aaba91bc/inference_demo.py#L208C11-L208C11).
 5. Now, just run `bash script/inference_demo.sh` to infer your demo case.
 
-### ViT Pre-trained
+### Use our pre-trained ViT as your model encoder
 We pre-train ViT on 96k CTs for over 2,000 epochs. The pre-trained ViT shows excellent generalization performance and the ability to accelerate convergence. You can use the ViT independently as your model's encoder. The pre-trained ViT params is [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link) and demo code is as follows:
 ```python
 import torch
