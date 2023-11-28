@@ -2,9 +2,11 @@
 This repo is the official implementation of [SegVol: Universal and Interactive Volumetric Medical Image Segmentation](https://arxiv.org/abs/2311.13385).
 
 ## News🚀
+(2023.11.28) Our model and demo case have been open-source at [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main)🤗🤗🤗!
+
 (2023.11.28) *The usage of pre-trained ViT has been uploaded.* 🔥🔥
 
-(2023.11.24) *You can download weight files of SegVol and ViT(CTs pre-train) [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link).* 🔥🔥
+(2023.11.24) *You can download weight files of SegVol and ViT(CTs pre-train) from [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main) or [Google Drive](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link).* 🔥🔥
 
 (2023.11.23) *The brief introduction and instruction have been uploaded.*
 
@@ -30,11 +32,11 @@ pip install transformers==4.18.0
 pip install matplotlib
 ``` 
 ### Config and run demo script
-1. You can download the demo case [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link), or download the whole demo dataset  [AbdomenCT-1K](https://github.com/JunMa11/AbdomenCT-1K) and choose any demo case you want.
+1. You can download the demo case from [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main)🤗 or [Google Drive](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link), or download the whole demo dataset  [AbdomenCT-1K](https://github.com/JunMa11/AbdomenCT-1K) and choose any demo case you want.
 2. Please set CT path and Ground Truth path of the case in the [config_demo.json](https://github.com/BAAI-DCAI/SegVol/blob/main/config/config_demo.json).
 3. After that, config the [inference_demo.sh](https://github.com/BAAI-DCAI/SegVol/blob/main/script/inference_demo.sh) file for execution:
 
-    - `$segvol_ckpt`: the path of SegVol's checkpoint (Download from [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link)).
+    - `$segvol_ckpt`: the path of SegVol's checkpoint (Download from [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main)🤗 or [Google Drive](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link)).
 
     - `$work_dir`: any path of folder you want to save the log files and visualizaion results.
 
@@ -42,7 +44,7 @@ pip install matplotlib
 5. Now, just run `bash script/inference_demo.sh` to infer your demo case.
 
 ### Use our pre-trained ViT as your model encoder
-We pre-train ViT on 96k CTs for over 2,000 epochs. The pre-trained ViT shows excellent generalization performance and the ability to accelerate convergence. You can use the ViT independently as your model's encoder. The pre-trained ViT weight file is [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link) and demo code is as follows:
+We pre-train ViT on 96k CTs for over 2,000 epochs. The pre-trained ViT shows excellent generalization performance and the ability to accelerate convergence. You can use the ViT independently as your model's encoder. The pre-trained ViT weight file is uploaded at [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main)🤗 and [Google Drive](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link) and demo code is as follows:
 ```python
 import torch
 from monai.networks.nets import ViT
