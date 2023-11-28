@@ -2,9 +2,9 @@
 This repo is the official implementation of [SegVol: Universal and Interactive Volumetric Medical Image Segmentation](https://arxiv.org/abs/2311.13385).
 
 ## News🚀
-(2023.11.27) *Experiment results and usage of ViT pre-training are comming soon.*
+(2023.11.27) *The usage of pre-trained ViT has been uploaded.* 🔥🔥
 
-(2023.11.24) *You can download weight files of SegVol and ViT(CTs pre-train) [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link).* 🔥
+(2023.11.24) *You can download weight files of SegVol and ViT(CTs pre-train) [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link).* 🔥🔥
 
 (2023.11.23) *The brief introduction and instruction have been uploaded.*
 
@@ -41,6 +41,28 @@ pip install matplotlib
 4. Finally, you can control the **prompt type**, **zoom-in-zoom-out mechanism** and **visualizaion switch** [here](https://github.com/BAAI-DCAI/SegVol/blob/35f3ff9c943a74f630e6948051a1fe21aaba91bc/inference_demo.py#L208C11-L208C11).
 5. Now, just run `bash script/inference_demo.sh` to infer your demo case.
 
+### ViT Pre-trained
+We pre-train ViT on 96k CTs for over 2,000 epochs. The pre-trained ViT shows excellent generalization performance and the ability to accelerate convergence. You can use the ViT independently as your model's encoder. The demo code is as follows:
+```python
+import torch
+from monai.networks.nets import ViT
+
+vit_checkpoint = 'path/to/ViT_pretrain.ckpt'
+
+vit = ViT(
+        in_channels=1,
+        img_size=(32,256,256),
+        patch_size=(4,16,16),
+        pos_embed="perceptron",
+        )
+print(vit)
+
+with open(vit_checkpoint, "rb") as f:
+    state_dict = torch.load(f, map_location='cpu')['state_dict']
+    encoder_dict = {k.replace('model.encoder.', ''): v for k, v in state_dict.items() if 'model.encoder.' in k}
+    vit.load_state_dict(encoder_dict)
+    print(f'Image_encoder load param: {vit_checkpoint}')
+```
 ## Citation
 If you find this repository helpful, please consider citing:
 ```
