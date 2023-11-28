@@ -44,7 +44,9 @@ pip install matplotlib
 5. Now, just run `bash script/inference_demo.sh` to infer your demo case.
 
 ### Use our pre-trained ViT as your model encoder
-We pre-train ViT on 96k CTs for over 2,000 epochs. The pre-trained ViT shows excellent generalization performance and the ability to accelerate convergence. You can use the ViT independently as your model's encoder. The pre-trained ViT weight file is uploaded at [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main)🤗 and [Google Drive](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link) and demo code is as follows:
+We pre-train ViT on 96k CTs for over 2,000 epochs. The pre-trained ViT shows excellent generalization performance and the ability to accelerate convergence. 
+
+You can use the ViT independently as your model's encoder. The pre-trained ViT weight file is uploaded at [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main)🤗 and [Google Drive](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link) and demo code is as follows:
 ```python
 import torch
 from monai.networks.nets import ViT
