@@ -60,8 +60,8 @@ print(vit)
 with open(vit_checkpoint, "rb") as f:
     state_dict = torch.load(f, map_location='cpu')['state_dict']
     encoder_dict = {k.replace('model.encoder.', ''): v for k, v in state_dict.items() if 'model.encoder.' in k}
-    vit.load_state_dict(encoder_dict)
-    print(f'Image_encoder load param: {vit_checkpoint}')
+vit.load_state_dict(encoder_dict)
+print(f'Image_encoder load param: {vit_checkpoint}')
 ```
 ## Citation
 If you find this repository helpful, please consider citing:
