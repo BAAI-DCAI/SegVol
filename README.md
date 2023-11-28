@@ -2,7 +2,7 @@
 This repo is the official implementation of [SegVol: Universal and Interactive Volumetric Medical Image Segmentation](https://arxiv.org/abs/2311.13385).
 
 ## News🚀
-(2023.11.27) *The usage of pre-trained ViT has been uploaded.* 🔥🔥
+(2023.11.28) *The usage of pre-trained ViT has been uploaded.* 🔥🔥
 
 (2023.11.24) *You can download weight files of SegVol and ViT(CTs pre-train) [here](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link).* 🔥🔥
 
