@@ -45,6 +45,13 @@ pip install matplotlib
 
 ### Use our pre-trained ViT as your model encoder
 We pre-train ViT on 96k CTs for over 2,000 epochs. The pre-trained ViT shows excellent generalization performance and the ability to accelerate convergence. 
+A simple experiment is performed on [AMOS22](https://amos22.grand-challenge.org/), training [UNETR](https://arxiv.org/abs/2103.10504) with and without pre-trained encoder:
+
+|   Model  | Encoder       |   Dice score(%)   |
+| :--:     | :--:          |:--:               |
+|   UNETR  | w/o pre-train |  67.12            |
+|   UNETR  | w   pretrain  |  79.10            |
+
 
 You can use the ViT independently as your model's encoder. The pre-trained ViT weight file is uploaded at [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main)🤗 and [Google Drive](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link). The demo code is as follows:
 ```python
