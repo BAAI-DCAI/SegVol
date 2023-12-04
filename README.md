@@ -2,7 +2,7 @@
 This repo is the official implementation of [SegVol: Universal and Interactive Volumetric Medical Image Segmentation](https://arxiv.org/abs/2311.13385).
 
 ## News🚀
-(2023.12.04) ***A web demo of SegVol is [here](https://huggingface.co/spaces/yuxindu/SegVol)! Just enjoy It!*** 🔥🔥🔥🔥
+(2023.12.04) ***A web demo of SegVol is [here](https://huggingface.co/spaces/yuxindu/SegVol)! Just enjoy it!*** 🔥🔥🔥🔥
 
 (2023.11.28) *Our model and demo case have been open-source at [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main).* 🤗🤗
 
