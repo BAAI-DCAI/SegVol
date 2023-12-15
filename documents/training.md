@@ -1,14 +1,4 @@
 ### Guideline for training SegVol
-#### Prepare for environment
-
-The [pytorch v1.11.0](https://pytorch.org/get-started/previous-versions/) (or higher version) is needed first. Following install key requirements using commands:
-
-```bash
-pip install 'monai[all]==0.9.0'
-pip install einops==0.6.1
-pip install transformers==4.18.0
-pip install matplotlib
-```
 
 #### Build universal datasets
 
@@ -34,7 +24,7 @@ After the process of building universal datasets finished, you should build pseu
 
 *If you combine **multiple datasets**, you should run the [script/build_pseudo_mask.sh](https://github.com/BAAI-DCAI/SegVol/blob/main/script/build_dataset.sh) for each dataset.*
 
-#### Train
+#### Training
 
 1. Make sure you have completed the above steps correctly.
 2. Set environment vars in [script/train.sh](https://github.com/BAAI-DCAI/SegVol/blob/main/script/train.sh):
@@ -46,7 +36,7 @@ After the process of building universal datasets finished, you should build pseu
     * Set the `$CUDA_VISIBLE_DEVICES` according to  your devices.
 3. Run `bash script/train.sh`.
 
-#### Train from scratch
+#### Training from scratch
 
 If you want to training from scratch without our SegVol checkpoint, I highly recommend that you use the pre-trained ViT [here](https://github.com/BAAI-DCAI/SegVol/blob/95e3f5f3c62b68fa63dbccb011a4c657642e1445/train.py#L148C4-L148C4) and modify [here](https://github.com/BAAI-DCAI/SegVol/blob/95e3f5f3c62b68fa63dbccb011a4c657642e1445/network/model.py#L206C20-L206C20) to load the CLIP TextEncoder parameters.
 
