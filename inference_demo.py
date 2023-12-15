@@ -210,7 +210,7 @@ def main(args):
     args.use_text_prompt = True
     args.use_box_prompt = True
     args.use_point_prompt = False
-    args.visualize = False
+    args.visualize = True
 
     inference_single_ct(args, segvol_model, data_item, categories)
 

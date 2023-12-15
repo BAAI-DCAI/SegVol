@@ -67,6 +67,7 @@ def process_ct_gt(case_path, label_path, category, spatial_size):
     item = {}
     # generate ct_voxel_ndarray
     ct_voxel_ndarray, _ = img_loader(case_path)
+    print(type(ct_voxel_ndarray))
     ct_voxel_ndarray = np.array(ct_voxel_ndarray).squeeze()
     ct_shape = ct_voxel_ndarray.shape
     ct_voxel_ndarray = np.expand_dims(ct_voxel_ndarray, axis=0)
