@@ -1,4 +1,4 @@
-### Use our pre-trained ViT as your model encoder
+### Using our pre-trained ViT as your model encoder
 We pre-train ViT on 96k CTs for over 2,000 epochs. The pre-trained ViT shows excellent generalization performance and the ability to accelerate convergence. 
 A simple experiment is performed on [AMOS22](https://amos22.grand-challenge.org/), training [UNETR](https://arxiv.org/abs/2103.10504) with and without pre-trained encoder:
 
