@@ -1,6 +1,10 @@
 # SegVol: Universal and Interactive Volumetric Medical Image Segmentation
 This repo is the official implementation of [SegVol: Universal and Interactive Volumetric Medical Image Segmentation](https://arxiv.org/abs/2311.13385).
 
+
+https://github.com/BAAI-DCAI/SegVol/assets/60123629/242a1578-e418-463c-9d53-a62eeb154c7d
+
+
 ## News🚀
 (2023.12.15) *The training code has been uploaded!*
 
