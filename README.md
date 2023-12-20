@@ -8,7 +8,7 @@ https://github.com/BAAI-DCAI/SegVol/assets/60123629/242a1578-e418-463c-9d53-a62e
 ## News🚀
 (2023.12.15) *The training code has been uploaded!*
 
-(2023.12.04) ***A web demo of SegVol is [here](https://huggingface.co/spaces/yuxindu/SegVol)! Just enjoy it!*** 🔥🔥🔥🔥
+(2023.12.04) ***A web demo of SegVol is [here](https://huggingface.co/spaces/BAAI/SegVol)! Just enjoy it!*** 🔥🔥🔥🔥
 
 (2023.11.28) *Our model and demo case have been open-source at [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main).* 🤗🤗
 
