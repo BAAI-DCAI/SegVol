@@ -6,15 +6,17 @@ https://github.com/BAAI-DCAI/SegVol/assets/60123629/242a1578-e418-463c-9d53-a62e
 
 
 ## News🚀
+(2023.12.25) *Our web demo **supports download results** now! You can use it as an online tool.* 🔥🔥🔥
+
 (2023.12.15) *The training code has been uploaded!*
 
-(2023.12.04) ***A web demo of SegVol is [here](https://huggingface.co/spaces/BAAI/SegVol)! Just enjoy it!*** 🔥🔥🔥🔥
+(2023.12.04) ***A web demo of SegVol is [here](https://huggingface.co/spaces/BAAI/SegVol)! Just enjoy it!*** 🔥🔥🔥
 
 (2023.11.28) *Our model and demo case have been open-source at [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main).* 🤗🤗
 
 (2023.11.28) *The usage of pre-trained ViT has been uploaded.* 
 
-(2023.11.24) *You can download weight files of SegVol and ViT(CTs pre-train) from [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main) or [Google Drive](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link).* 🔥🔥
+(2023.11.24) *You can download weight files of SegVol and ViT(CTs pre-train) from [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main) or [Google Drive](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link).* 🔥🔥🔥
 
 (2023.11.23) *The brief introduction and instruction have been uploaded.*
 
