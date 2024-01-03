@@ -177,11 +177,11 @@ class SegVol(nn.Module):
             # generate box prompt
             box = generate_box(pseudo_labels[batch_idx][0])
             iter_bboxes.append(box)
-            ###### refine pseudo label
+            # refine pseudo label
             x_min, y_min, z_min, x_max, y_max, z_max = box
             binary_cube = torch.zeros_like(pseudo_labels[batch_idx][0]).int()
             binary_cube[x_min:x_max+1, y_min:y_max+1, z_min:z_max+1] = 1
-            ## cal iou
+            # cal iou
             mask_label = seg_labels_cleaned[batch_idx][0]
             assert binary_cube.shape == mask_label.shape, str(binary_cube.shape) + ' ' + str(mask_label.shape)
             mask_values_in_binary_cube = mask_label[binary_cube == 1]
@@ -195,7 +195,7 @@ class SegVol(nn.Module):
                 if iou > 0.90:
                     # print(f"Mask value {value} has IOU > 0.90 in binary cube.")
                     pseudo_labels[batch_idx][seg_labels_cleaned[batch_idx]==value] = 1
-            ###
+
         bboxes = torch.stack(iter_bboxes, dim=0).float().cuda()
         return pseudo_labels, bboxes
     

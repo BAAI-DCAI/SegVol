@@ -22,17 +22,6 @@ from monai.networks.nets.swin_unetr import SwinTransformer as SwinViT
 
 from monai.utils import ensure_tuple_rep, optional_import
 
-
-"""
-Examples::
-            # for 3D single channel input with size (96,96,96), 4-channel output and feature size of 48.
-            >>> net = SwinUNETR(img_size=(96,96,96), in_channels=1, out_channels=4, feature_size=48)
-            # for 3D 4-channel input with size (128,128,128), 3-channel output and (2,4,2,2) layers in each stage.
-            >>> net = SwinUNETR(img_size=(128,128,128), in_channels=4, out_channels=3, depths=(2,4,2,2))
-            # for 2D single channel input with size (96,96), 2-channel output and gradient checkpointing.
-            >>> net = SwinUNETR(img_size=(96,96), in_channels=3, out_channels=2, use_checkpoint=True, spatial_dims=2)
-"""
-
 def build_sam_vit_3d(args, checkpoint=None):
     print('build_sam_vit_3d...')
     return _build_sam(

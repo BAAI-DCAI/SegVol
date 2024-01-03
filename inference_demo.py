@@ -118,7 +118,6 @@ def zoom_in_zoom_out(args, segvol_model, image, image_resize, gt3D, gt3D_resize,
         global_preds = (torch.sigmoid(logits_global_single[min_d:max_d+1, min_h:max_h+1, min_w:max_w+1])>0.5).long()
         
         assert not (args.use_box_prompt and args.use_point_prompt)
-        # label_single_cropped = label_single[min_d:max_d+1, min_h:max_h+1, min_w:max_w+1].unsqueeze(0).unsqueeze(0)
         prompt_reflection = None
         if args.use_box_prompt:
             binary_cube_cropped = binary_cube[min_d:max_d+1, min_h:max_h+1, min_w:max_w+1]
@@ -163,7 +162,7 @@ def inference_single_ct(args, segvol_model, data_item, categories):
     logits_labels_record = zoom_in_zoom_out(
         args, segvol_model, 
         image.unsqueeze(0), image_zoom_out.unsqueeze(0), 
-        gt3D.unsqueeze(0), gt3D__zoom_out.unsqueeze(0),     # add batch dim
+        gt3D.unsqueeze(0), gt3D__zoom_out.unsqueeze(0),
         categories=categories)
     
     # visualize
@@ -203,7 +202,7 @@ def main(args):
     ct_path, gt_path, categories = config_dict['demo_case']['ct_path'], config_dict['demo_case']['gt_path'], config_dict['categories']
 
     # preprocess for data
-    data_item = process_ct_gt(ct_path, gt_path, categories, args.spatial_size)   # keys: image, label
+    data_item = process_ct_gt(ct_path, gt_path, categories, args.spatial_size)
 
     # seg config for prompt & zoom-in-zoom-out
     args.use_zoom_in = True

@@ -97,17 +97,8 @@ class MaskDecoder(nn.Module):
         """
         Predict masks given image and prompt embeddings.
 
-        Arguments:
-          image_embeddings (torch.Tensor): the embeddings from the image encoder
-          image_pe (torch.Tensor): positional encoding with the shape of image_embeddings
-          sparse_prompt_embeddings (torch.Tensor): the embeddings of the points and boxes
-          dense_prompt_embeddings (torch.Tensor): the embeddings of the mask inputs
-          multimask_output (bool): Whether to return multiple masks or a single
-            mask.
-
         Returns:
           torch.Tensor: batched predicted masks
-          torch.Tensor: batched predictions of mask quality
         """
         # print('--------------decoder here--------------')
         masks, iou_pred = self.predict_masks(
@@ -141,7 +132,7 @@ class MaskDecoder(nn.Module):
         # Concatenate output tokens
         output_tokens = torch.cat([self.iou_token.weight, self.mask_tokens.weight], dim=0)
         output_tokens = output_tokens.unsqueeze(0).expand(sparse_prompt_embeddings.size(0), -1, -1)
-        tokens = torch.cat((output_tokens, sparse_prompt_embeddings), dim=1)    # [2, 7=(5+2), 256]
+        tokens = torch.cat((output_tokens, sparse_prompt_embeddings), dim=1)
         # Expand per-image data in batch direction to be per-mask
         if image_embeddings.shape[0] != tokens.shape[0]:
             src = torch.repeat_interleave(image_embeddings, tokens.shape[0], dim=0)
@@ -158,33 +149,20 @@ class MaskDecoder(nn.Module):
 
         # Upscale mask embeddings and predict masks using the mask tokens
         src = src.transpose(1, 2).view(b, c, h, w, d)
-        # print('src ', src.shape) # vit:[B, 768, 12, 12, 6], swin: [B, 6, 6, 3]
         upscaled_embedding = self.output_upscaling(src)
         hyper_in_list: List[torch.Tensor] = []
         for i in range(self.num_mask_tokens):
             hyper_in_list.append(self.output_hypernetworks_mlps[i](mask_tokens_out[:, i, :]))
         hyper_in = torch.stack(hyper_in_list, dim=1)
         b, c, h, w, d = upscaled_embedding.shape
-        # print('hyper_in ', hyper_in.shape)    # [2, 4, 96]
-        # print('upscaled_embedding ', upscaled_embedding.shape)    # [2, 96, 24, 24, 12]*
         masks = (hyper_in @ upscaled_embedding.view(b, c, h * w * d)).view(b, -1, h, w, d)
-        # print('masks here ', masks.shape) # [2, 4, 24, 24, 12]
         
         if text_embedding is not None:
-            # text_embedding: B x 768, upscaled_embedding: B x c x h x w x d => B x 1 x h x w x d
             text_embedding_down = self.txt_align_upscaled_embedding(text_embedding).unsqueeze(dim=1)
             upscaled_embedding = upscaled_embedding.view(b, c, h * w * d)
-            # print('text_embedding_down ', text_embedding_down.shape)  # [2, 1, 96]
-            # text_embedding_norm = F.normalize(text_embedding_down, dim=-1)
-            # upscaled_embedding_norm = F.normalize(upscaled_embedding, dim=1)
-            # sim = (text_embedding_norm @ upscaled_embedding_norm).view(b, -1, h, w, d)
-            # print(text_embedding_down.shape, upscaled_embedding.shape)
             sim = (text_embedding_down @ upscaled_embedding).view(b, -1, h, w, d)
-            # print('sim ', sim.shape)  # [B, 1, 24, 24, 12]
             sim = sim.repeat(1, masks.shape[1], 1, 1, 1)
-            # print('sim after', sim.shape) # [B, 4, 24, 24, 12]
             masks = masks + sim
-        # Generate mask quality predictions
         iou_pred = self.iou_prediction_head(iou_token_out)
 
         return masks, iou_pred

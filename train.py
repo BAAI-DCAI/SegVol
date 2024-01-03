@@ -9,7 +9,6 @@ import shutil
 from utils.lr_scheduler import LinearWarmupCosineAnnealingLR
 from utils.loss import BCELoss, BinaryDiceLoss
 from data_utils import get_loader
-from torch.cuda.amp import GradScaler, autocast
 from tensorboardX import SummaryWriter
 from tqdm import tqdm
 
@@ -44,13 +43,11 @@ def set_parse():
     parser.add_argument('-warmup_epoch', type=int, default=10)
     parser.add_argument('-num_epochs', type=int, default=500)
     parser.add_argument('-batch_size', type=int, default=4)
-    parser.add_argument('-use_amp', type=bool, default=True, 
-                        help='use amp')
     parser.add_argument("--use_pseudo_label", default=True, type=bool)
     args = parser.parse_args()
     return args
 
-def train_epoch(args, segvol_model, train_dataloader, optimizer, scheduler, epoch, scaler, rank, gpu, iter_num):
+def train_epoch(args, segvol_model, train_dataloader, optimizer, scheduler, epoch, rank, gpu, iter_num):
     epoch_loss = 0
     epoch_sl_loss = 0
     epoch_ssl_loss = 0
@@ -78,26 +75,19 @@ def train_epoch(args, segvol_model, train_dataloader, optimizer, scheduler, epoc
             if torch.sum(labels_cls) == 0:
                 print(f'[RANK {rank}: GPU {gpu}] ITER-{iter_num} --- No object, skip iter')
                 continue
-            with autocast(enabled=args.use_amp, dtype=torch.float16):
-                sl_loss, ssl_loss = segvol_model(image, organs=None, boxes=None, points=None,
-                                                train_organs=organs_cls,
-                                                train_labels=labels_cls,
-                                                pseudo_seg_cleaned=pseudo_seg_cleaned)
-                if args.use_pseudo_label:
-                    loss = sl_loss + 0.1 * ssl_loss
-                    ssl_loss_step_avg += ssl_loss.item()
-                    sl_loss_step_avg += sl_loss.item()
-                loss_step_avg += loss.item()
+
+            sl_loss, ssl_loss = segvol_model(image, organs=None, boxes=None, points=None,
+                                            train_organs=organs_cls,
+                                            train_labels=labels_cls,
+                                            pseudo_seg_cleaned=pseudo_seg_cleaned)
+            if args.use_pseudo_label:
+                loss = sl_loss + 0.1 * ssl_loss
+                ssl_loss_step_avg += ssl_loss.item()
+                sl_loss_step_avg += sl_loss.item()
+            loss_step_avg += loss.item()
             
-            if args.use_amp:
-                if args.use_pseudo_label:
-                    scaler.scale(0.1 * ssl_loss).backward(retain_graph=True)
-                scaler.scale(sl_loss).backward()
-                scaler.step(optimizer)
-                scaler.update()
-            else:
-                loss.backward()
-                optimizer.step()
+            loss.backward()
+            optimizer.step()
             print(f'[RANK {rank}: GPU {gpu}] ITER-{iter_num} --- loss {loss.item()}, sl_loss, {sl_loss.item()}, ssl_loss {ssl_loss.item()}')
             iter_num += 1
 
@@ -155,6 +145,7 @@ def main_worker(gpu, ngpus_per_node, args):
                         patch_size=args.patch_size,
                         test_mode=args.test_mode,
                         ).cuda()
+    
     segvol_model = torch.nn.parallel.DistributedDataParallel(
         segvol_model,
         device_ids = [gpu],
@@ -188,12 +179,6 @@ def main_worker(gpu, ngpus_per_node, args):
             scheduler.last_epoch = start_epoch
             print(rank, "=> loaded checkpoint '{}' (epoch {})".format(args.resume, checkpoint['epoch']))
         torch.distributed.barrier()
-    
-    if args.use_amp:
-        scaler = GradScaler(enabled=args.use_amp)
-        print(f"[RANK {rank}: GPU {gpu}] Using AMP for training")
-    else:
-        scaler = None
 
     if rank == 0:
         args.writer = SummaryWriter(log_dir='./tb_log/' + args.run_id)
@@ -201,7 +186,7 @@ def main_worker(gpu, ngpus_per_node, args):
 
     for epoch in range(start_epoch, num_epochs):
         with segvol_model.join():
-            epoch_loss, iter_num = train_epoch(args, segvol_model, train_dataloader, optimizer, scheduler, epoch, scaler, rank, gpu, iter_num)
+            epoch_loss, iter_num = train_epoch(args, segvol_model, train_dataloader, optimizer, scheduler, epoch, rank, gpu, iter_num)
 
         print(f'Time: {datetime.now().strftime("%Y%m%d-%H%M")}, Epoch: {epoch}, Loss: {epoch_loss}')
         # save the model checkpoint

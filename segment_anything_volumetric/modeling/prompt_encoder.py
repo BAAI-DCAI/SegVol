@@ -135,29 +135,10 @@ class PromptEncoder(nn.Module):
         masks: Optional[torch.Tensor],
         text_embedding: Optional[torch.Tensor],
     ) -> Tuple[torch.Tensor, torch.Tensor]:
-        """
-        Embeds different types of prompts, returning both sparse and dense
-        embeddings.
-
-        Arguments:
-          points (tuple(torch.Tensor, torch.Tensor) or none): point coordinates
-            and labels to embed.
-          boxes (torch.Tensor or none): boxes to embed
-          masks (torch.Tensor or none): masks to embed
-          text: test prompt (B, 768)
-
-        Returns:
-          torch.Tensor: sparse embeddings for the points and boxes, with shape
-            BxNx(embed_dim), where N is determined by the number of input points
-            and boxes.
-          torch.Tensor: dense embeddings for the masks, in the shape
-            Bx(embed_dim)x(embed_H)x(embed_W)
-        """
-        # print('prompt encoder here...')
         
         bs = self._get_batch_size(points, boxes, masks, text_embedding)
         sparse_embeddings = torch.empty((bs, 0, self.embed_dim), device=self._get_device())
-        # print('sparse_embeddings ', sparse_embeddings.shape)
+
         if points is not None:
             coords, labels = points
             point_embeddings = self._embed_points(coords, labels, pad=(boxes is None))
@@ -170,16 +151,13 @@ class PromptEncoder(nn.Module):
         if text_embedding is not None:
             sparse_embeddings = torch.cat([sparse_embeddings, text_embedding.unsqueeze(dim=1)], dim=1)
         
-        # print('box_embeddings ', box_embeddings.shape)
-        # print('sparse_embeddings after box/point/text', sparse_embeddings.shape)
-        
         if masks is not None:
             dense_embeddings = self._embed_masks(masks)
         else:
             dense_embeddings = self.no_mask_embed.weight.reshape(1, -1, 1, 1, 1).expand(
                 bs, -1, int(self.image_embedding_size[0]), int(self.image_embedding_size[1]), int(self.image_embedding_size[2])
             )
-        # print('dense_embeddings ', dense_embeddings.shape)
+
         return sparse_embeddings, dense_embeddings
 
 
