@@ -2,7 +2,7 @@
 This repo is the official implementation of [SegVol: Universal and Interactive Volumetric Medical Image Segmentation](https://arxiv.org/abs/2311.13385).
 
 ## News🚀
-(2024.01.03) *A radar map about the comparison experiment with **other medical SAM** methods has been reported.* 🏆
+(2024.01.03) *A radar map about comparison experiment with **other medical SAM** methods has been reported.* 🏆
 
 (2023.12.25) *Our web tool **supports download results** now! You can use it as an online tool.* 🔥🔥🔥
 
