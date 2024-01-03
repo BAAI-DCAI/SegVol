@@ -6,6 +6,8 @@ https://github.com/BAAI-DCAI/SegVol/assets/60123629/242a1578-e418-463c-9d53-a62e
 
 
 ## News🚀
+(2024.01.03) *A radar map about the comparison experiment with **other medical SAM** methods has been reported.* 🏆
+
 (2023.12.25) *Our web tool **supports download results** now! You can use it as an online tool.* 🔥🔥🔥
 
 (2023.12.15) *The training code has been uploaded!*
@@ -30,6 +32,11 @@ https://github.com/BAAI-DCAI/SegVol/assets/60123629/242a1578-e418-463c-9d53-a62e
 The SegVol is a universal and interactive model for volumetric medical image segmentation. SegVol accepts **point**, **box** and **text** prompt while output volumetric segmentation. By training on 90k unlabeled Computed Tomography (CT) volumes and 6k labeled CTs, this foundation model supports the segmentation of over 200 anatomical categories.
 
 We will release SegVol's **inference code**, **training code**, **model params** and **ViT pre-training params** (pre-training is performed over 2,000 epochs on 96k  CTs). 
+
+## Zero-Shot Performance🏆
+<img src="https://github.com/BAAI-DCAI/SegVol/assets/60123629/87ecf78e-176a-4a13-940a-9109fbf87aa8" width="75%" height="75%">
+
+We performed a zero-shot experiment using novel annotated dataset from the [ULS23 Challenge](https://uls23.grand-challenge.org/) (750 + 744 + 124 cases) and the validation dataset from [Amos22](https://amos22.grand-challenge.org/) (120 cases). SegVol showed strong segmentation abilities compared to other medical SAM methods in accurately segmenting lesions and 15 important organs.
 
 ## Usage
 ### Requirements
