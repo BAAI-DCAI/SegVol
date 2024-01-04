@@ -2,7 +2,7 @@
 This repo is the official implementation of [SegVol: Universal and Interactive Volumetric Medical Image Segmentation](https://arxiv.org/abs/2311.13385).
 
 ## News🚀
-(2024.01.03) *A radar map about **zero-shot experiment** has been reported.* 🏆
+(2024.01.03) *A radar map about [**zero-shot experiment**](#jump) has been reported.* 🏆
 
 (2023.12.25) *Our web tool **supports download results** now! You can use it as an online tool.* 🔥🔥🔥
 
@@ -35,7 +35,9 @@ The SegVol is a universal and interactive model for volumetric medical image seg
 We will release SegVol's **inference code**, **training code**, **model params** and **ViT pre-training params** (pre-training is performed over 2,000 epochs on 96k  CTs). 
 
 ## Zero-Shot Performance🏆
+<span id="jump">
 <img src="https://github.com/BAAI-DCAI/SegVol/assets/60123629/4c08a315-346d-419d-8cdd-1c04dfd789d4" width="75%" height="75%">
+</span>
 
 We performed a zero-shot experiment using novel annotated dataset from the [ULS23 Challenge](https://uls23.grand-challenge.org/) (750 + 744 + 124 cases about lesions) and the validation dataset from [Amos22](https://amos22.grand-challenge.org/) (120 cases about organs). SegVol showed strong segmentation abilities compared to other medical SAM methods in accurately segmenting lesions and 15 important organs.
 
