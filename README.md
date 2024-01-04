@@ -37,7 +37,7 @@ We will release SegVol's **inference code**, **training code**, **model params**
 ## Zero-Shot Performance🏆
 <img src="https://github.com/BAAI-DCAI/SegVol/assets/60123629/4c08a315-346d-419d-8cdd-1c04dfd789d4" width="75%" height="75%">
 
-We performed a zero-shot experiment using novel annotated dataset from the [ULS23 Challenge](https://uls23.grand-challenge.org/) (750 + 744 + 124 cases) and the validation dataset from [Amos22](https://amos22.grand-challenge.org/) (120 cases). SegVol showed strong segmentation abilities compared to other medical SAM methods in accurately segmenting lesions and 15 important organs.
+We performed a zero-shot experiment using novel annotated dataset from the [ULS23 Challenge](https://uls23.grand-challenge.org/) (750 + 744 + 124 cases about lesions) and the validation dataset from [Amos22](https://amos22.grand-challenge.org/) (120 cases about organs). SegVol showed strong segmentation abilities compared to other medical SAM methods in accurately segmenting lesions and 15 important organs.
 
 ## Usage
 ### Requirements
