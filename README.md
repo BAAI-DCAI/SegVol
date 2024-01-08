@@ -1,6 +1,8 @@
 # SegVol: Universal and Interactive Volumetric Medical Image Segmentation
 This repo is the official implementation of [SegVol: Universal and Interactive Volumetric Medical Image Segmentation](https://arxiv.org/abs/2311.13385).
 
+**Key words**: medical 3D SAM, volumetric image segmentation
+
 ## News🚀
 (2024.01.03) *A radar map about [**zero-shot experiment**](#jump) has been reported.* 🏆
 
