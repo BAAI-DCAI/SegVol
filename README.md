@@ -3,7 +3,7 @@ This repo is the official implementation of [SegVol: Universal and Interactive V
 
 **Key words**: 3D medical SAM, volumetric image segmentation
 
-
+<img src="https://github.com/BAAI-DCAI/SegVol/assets/60123629/3f0c440f-471f-415b-bc07-08ef1e5aeb98" width="100%" height="100%">
 
 
 ## News🚀
@@ -34,8 +34,9 @@ https://github.com/BAAI-DCAI/SegVol/assets/60123629/242a1578-e418-463c-9d53-a62e
 
 ## Introduction
 
+![model_arch](https://github.com/BAAI-DCAI/SegVol/assets/60123629/58340b5d-28f8-4593-827c-555397552388)
 
-<img src="https://github.com/BAAI-DCAI/SegVol/assets/60123629/3f0c440f-471f-415b-bc07-08ef1e5aeb98" width="100%" height="100%">
+
 
 
 The SegVol is a universal and interactive model for volumetric medical image segmentation. SegVol accepts **point**, **box** and **text** prompt while output volumetric segmentation. By training on 90k unlabeled Computed Tomography (CT) volumes and 6k labeled CTs, this foundation model supports the segmentation of over 200 anatomical categories.
