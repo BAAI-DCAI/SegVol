@@ -33,7 +33,9 @@ https://github.com/BAAI-DCAI/SegVol/assets/60123629/242a1578-e418-463c-9d53-a62e
 
 
 ## Introduction
-<img src="https://github.com/BAAI-DCAI/SegVol/blob/main/asset/overview.png" width="45%" height="50%"> <img src="https://github.com/BAAI-DCAI/SegVol/assets/60123629/e8be1377-b73b-4388-a669-38c150c0bfed" width="45%" height="45%">
+
+
+<img src="https://github.com/BAAI-DCAI/SegVol/assets/60123629/3f0c440f-471f-415b-bc07-08ef1e5aeb98" width="100%" height="100%">
 
 
 The SegVol is a universal and interactive model for volumetric medical image segmentation. SegVol accepts **point**, **box** and **text** prompt while output volumetric segmentation. By training on 90k unlabeled Computed Tomography (CT) volumes and 6k labeled CTs, this foundation model supports the segmentation of over 200 anatomical categories.
