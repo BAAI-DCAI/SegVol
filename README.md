@@ -34,8 +34,7 @@ https://github.com/BAAI-DCAI/SegVol/assets/60123629/242a1578-e418-463c-9d53-a62e
 
 ## Introduction
 
-![model_arch](https://github.com/BAAI-DCAI/SegVol/assets/60123629/58340b5d-28f8-4593-827c-555397552388)
-
+![model_single](https://github.com/BAAI-DCAI/SegVol/assets/60123629/7aca9453-b139-469b-a3de-9401475806bf)
 
 
 
