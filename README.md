@@ -51,7 +51,7 @@ We performed a zero-shot experiment using novel annotated dataset from the [ULS2
 
 ### Visualization🔍
 
-![COMBINE_lower](https://github.com/BAAI-DCAI/SegVol/assets/60123629/5b0d4b54-85f0-4349-b234-ec1374ce469f)
+![vis](https://github.com/BAAI-DCAI/SegVol/assets/60123629/d70098ec-d8cf-4b16-8b2b-4233cb992720)
 
 
 ## Usage
