@@ -34,15 +34,38 @@ pip install matplotlib
 ## [Web Tool](https://huggingface.co/spaces/BAAI/SegVol) of SegVol 📽
 https://github.com/BAAI-DCAI/SegVol/assets/60123629/242a1578-e418-463c-9d53-a62eeb154c7d
 
+## Internal Validation Performance🏆
+<div align="center">
+
+  ![github(7)](https://github.com/BAAI-DCAI/SegVol/assets/60123629/a578a66a-ddef-457a-8bf7-9ca5c8a9ba1c)
+
+</div>
+
 <span id="jump"></span>
-## Zero-Shot Performance🏆
-<img src="https://github.com/BAAI-DCAI/SegVol/assets/60123629/2f3b4683-f4c3-4f61-b108-f21d80ba5904" width="75%" height="75%">
+
+## External Validation Performance🏆
+<div align="center">
+  <img src="https://github.com/BAAI-DCAI/SegVol/assets/60123629/2f3b4683-f4c3-4f61-b108-f21d80ba5904" width="75%" height="75%">
+  
+  ![github(9)](https://github.com/BAAI-DCAI/SegVol/assets/60123629/7dac6593-f1c7-4dbf-b5b8-d9f6bdf7b3ae)
+
+</div>
 
 
-We performed a zero-shot experiment using novel annotated dataset from the [ULS23 Challenge](https://uls23.grand-challenge.org/) (750 + 744 + 124 cases about lesions) and the validation dataset from [Amos22](https://amos22.grand-challenge.org/) (120 cases about organs). SegVol showed strong segmentation abilities compared to other medical SAM methods in accurately segmenting lesions and 15 important organs.
+
+We performed an external validation experiment using novel annotated dataset from the [ULS23 Challenge](https://uls23.grand-challenge.org/) (750 + 744 + 124 cases about lesions) and the validation dataset from [Amos22](https://amos22.grand-challenge.org/) (120 cases about organs). SegVol showed strong segmentation abilities compared to other medical SAM methods in accurately segmenting lesions and 15 important organs.
 
 ### Visualization🔍
 
+#### Dataset
+![页-2](https://github.com/BAAI-DCAI/SegVol/assets/60123629/5a26a956-0112-4d22-b351-921555772887)
+
+
+#### Internal Validation
+![页-1](https://github.com/BAAI-DCAI/SegVol/assets/60123629/9ca9467e-e916-4116-bb0f-68eea7655ea0)
+
+
+#### External Validation
 ![vis](https://github.com/BAAI-DCAI/SegVol/assets/60123629/d70098ec-d8cf-4b16-8b2b-4233cb992720)
 
 
