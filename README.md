@@ -112,6 +112,8 @@ Thanks for the following amazing works:
 
 [MONAI](https://github.com/Project-MONAI/MONAI).
 
+[3D Slicer](https://www.slicer.org/).
+
 [Image by brgfx](https://www.freepik.com/free-vector/anatomical-structure-human-bodies_26353260.htm) on Freepik.
 
 [Image by muammark](https://www.freepik.com/free-vector/people-icon-collection_1157380.htm#query=user&position=2&from_view=search&track=sph) on Freepik.
