@@ -32,6 +32,36 @@ pip install matplotlib
 
 [How to use our pre-trained ViT as your model encoder](https://github.com/BAAI-DCAI/SegVol/blob/main/documents/pretrained_vit.md).
 
+### Datasets involved
+
+| Dataset  | Link |
+| ------------- | ------------- |
+| 3D-IRCADB  | https://www.kaggle.com/datasets/nguyenhoainam27/3dircadb |
+|AbdomenCT-1k|	https://github.com/JunMa11/AbdomenCT-1K|
+|AMOS22|	https://amos22.grand-challenge.org/|
+|BTCV|	https://www.synapse.org/\#!Synapse:syn3193805/wiki/217752|
+|CHAOS|	https://chaos.grand-challenge.org/|
+|CT-ORG|	https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=61080890|
+|FLARE22|	https://flare22.grand-challenge.org/|
+|HaN-Seg|	https://han-seg2023.grand-challenge.org/|
+|KiPA22|	https://kipa22.grand-challenge.org/|
+|KiTS19|	https://kits19.grand-challenge.org/|
+|KiTS23|	https://kits-challenge.org/kits23/|
+|LUNA16|	https://luna16.grand-challenge.org/Data/|
+|MSD-Colon|	http://medicaldecathlon.com/|
+|MSD-HepaticVessel|	http://medicaldecathlon.com/|
+|MSD-Liver|	http://medicaldecathlon.com/|
+|MSD-lung|  	http://medicaldecathlon.com/|
+|MSD-pancreas|	http://medicaldecathlon.com/|
+|MSD-spleen|	http://medicaldecathlon.com/|
+|Pancreas-CT|	https://wiki.cancerimagingarchive.net/display/public/pancreas-ct|
+|QUBIQ|	https://qubiq.grand-challenge.org/|
+|SLIVER07|	https://sliver07.grand-challenge.org/|
+|TotalSegmentator|	https://github.com/wasserth/TotalSegmentator|
+|ULS23|	https://uls23.grand-challenge.org/|
+|VerSe19|	https://osf.io/nqjyw/|
+|VerSe20|	https://osf.io/t98fz/|
+|WORD|	https://paperswithcode.com/dataset/word|
 
 ## [Web Tool](https://huggingface.co/spaces/BAAI/SegVol) of SegVol 📽
 https://github.com/BAAI-DCAI/SegVol/assets/60123629/242a1578-e418-463c-9d53-a62eeb154c7d
