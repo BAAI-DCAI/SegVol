@@ -6,17 +6,17 @@
   | 📃 [**Paper**](https://arxiv.org/abs/2311.13385) | 🤗 [**Web Tool**](https://huggingface.co/spaces/BAAI/SegVol) | 🤗 [**Model Card**](https://huggingface.co/BAAI/SegVol/tree/main) | 📂 [**Weight Files**](https://drive.google.com/drive/folders/1TEJtgctH534Ko5r4i79usJvqmXVuLf54?usp=drive_link) |
 </div>
 
-🚀**News**: The **information and links of original datasets** have been collected in the Supplementary Materials of [paper](https://arxiv.org/abs/2311.13385) preprinted in arXiv.
+### 🚀**News**: The post-processed 25 datasets have been uploaded to [ModelScope](https://www.modelscope.cn/datasets/GoodBaiBai88/M3D-Seg/summary) and [HuggingFace](https://huggingface.co/datasets/GoodBaiBai88/M3D-Seg).
 
 The SegVol is a universal and interactive model for volumetric medical image segmentation. SegVol accepts **point**, **box** and **text** prompt while output volumetric segmentation. By training on 90k unlabeled Computed Tomography (CT) volumes and 6k labeled CTs, this foundation model supports the segmentation of over 200 anatomical categories.
 
 We have released SegVol's **inference code**, **training code**, **model params** and **ViT pre-training params** (pre-training is performed over 2,000 epochs on 96k  CTs). 
 
-**Key words**: 3D medical SAM, volumetric image segmentation
+**Keywords**: 3D medical SAM, volumetric image segmentation
 
 ## Quickstart
 ### Requirements
-The [pytorch v1.11.0](https://pytorch.org/get-started/previous-versions/) (or higher version) is needed first. Following install key requirements using commands:
+The [pytorch v1.11.0](https://pytorch.org/get-started/previous-versions/) (or a higher version) is needed first. Following install key requirements using commands:
 
 ```
 pip install 'monai[all]==0.9.0'
@@ -33,7 +33,9 @@ pip install matplotlib
 [How to use our pre-trained ViT as your model encoder](https://github.com/BAAI-DCAI/SegVol/blob/main/documents/pretrained_vit.md).
 
 ### Datasets involved
+🚀The post-processed 25 datasets have been uploaded to [ModelScope](https://www.modelscope.cn/datasets/GoodBaiBai88/M3D-Seg/summary) and [HuggingFace](https://huggingface.co/datasets/GoodBaiBai88/M3D-Seg).
 
+Links to the original datasets:
 | Dataset  | Link |
 | ------------- | ------------- |
 | 3D-IRCADB  | https://www.kaggle.com/datasets/nguyenhoainam27/3dircadb |
