@@ -69,7 +69,7 @@ Links to the original datasets:
 ## [Web Tool](https://huggingface.co/spaces/BAAI/SegVol) of SegVol 📽
 https://github.com/BAAI-DCAI/SegVol/assets/60123629/242a1578-e418-463c-9d53-a62eeb154c7d
 
-## Internal Validation Performance🏆
+## 🏆Internal Validation Performance(Dice Score)
 <div align="center">
 
   ![github(7)](https://github.com/BAAI-DCAI/SegVol/assets/60123629/a578a66a-ddef-457a-8bf7-9ca5c8a9ba1c)
@@ -78,7 +78,7 @@ https://github.com/BAAI-DCAI/SegVol/assets/60123629/242a1578-e418-463c-9d53-a62e
 
 <span id="jump"></span>
 
-## External Validation Performance🏆
+## 🏆External Validation Performance(Dice Score)
 <div align="center">
   <img src="https://github.com/BAAI-DCAI/SegVol/assets/60123629/2f3b4683-f4c3-4f61-b108-f21d80ba5904" width="75%" height="75%">
   
