@@ -1,6 +1,7 @@
 ### Guideline for training SegVol
 
 #### Build universal datasets
+📂 If the 25 processed datasets in our [ModelScope/魔搭社区](https://www.modelscope.cn/datasets/GoodBaiBai88/M3D-Seg/summary) or [HuggingFace](https://www.modelscope.cn/datasets/GoodBaiBai88/M3D-Seg/summary) have been downloaded, you can skip this step.
 
 1. We use the [Abdomenct-12organ](https://zenodo.org/records/7860267) as demo dataset. 
 2. After downloading the demo dataset, you need to config the [script/build_dataset.sh](https://github.com/BAAI-DCAI/SegVol/blob/main/script/build_dataset.sh) file to set the environment vars:
