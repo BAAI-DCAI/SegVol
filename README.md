@@ -94,7 +94,7 @@ We performed an external validation experiment using a novel annotated dataset f
 
 ### Visualization🔍
 
-#### Dataset (We will release our dataset shortly)
+#### Dataset (Released)
 ![页-2](https://github.com/BAAI-DCAI/SegVol/assets/60123629/5a26a956-0112-4d22-b351-921555772887)
 
 
