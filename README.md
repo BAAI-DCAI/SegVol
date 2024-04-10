@@ -33,7 +33,7 @@ pip install matplotlib
 [How to use our pre-trained ViT as your model encoder](https://github.com/BAAI-DCAI/SegVol/blob/main/documents/pretrained_vit.md).
 
 ### Datasets involved
-🚀The 25 processed datasets are being uploaded to [ModelScope/魔搭社区](https://www.modelscope.cn/datasets/GoodBaiBai88/M3D-Seg/summary)(finished) and [HuggingFace](https://huggingface.co/datasets/GoodBaiBai88/M3D-Seg)(in progress).
+🚀The 25 processed datasets are being uploaded to [ModelScope/魔搭社区](https://www.modelscope.cn/datasets/GoodBaiBai88/M3D-Seg/summary) and [HuggingFace](https://huggingface.co/datasets/GoodBaiBai88/M3D-Seg).
 
 
 Links to the original datasets:
