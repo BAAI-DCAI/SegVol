@@ -17,6 +17,7 @@ We have released SegVol's **inference code**, **training code**, **model params*
 **Keywords**: 3D medical SAM, volumetric image segmentation
 
 ## Quickstart
+### [Quickstart](https://www.modelscope.cn/models/yuxindu/SegVol/summary) with ModelScope: Enable easy training and testing.
 ### Requirements
 The [pytorch v1.11.0](https://pytorch.org/get-started/previous-versions/) (or a higher version) is needed first. Following install key requirements using commands:
 
