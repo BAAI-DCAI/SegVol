@@ -3,7 +3,7 @@
   
   <img src="https://github.com/BAAI-DCAI/SegVol/assets/60123629/6f56fc35-1d75-468c-ab82-1e0cf47eb83e" width="85%" height="85%">
   
- | 🌟[**Quickstart**](https://www.modelscope.cn/models/yuxindu/SegVol/summary) | 📃 [**Paper**](https://arxiv.org/abs/2311.13385) | 🤗 [**Web Tool**](https://huggingface.co/spaces/BAAI/SegVol) | 🤗 [**Weight Files**](https://huggingface.co/BAAI/SegVol/tree/main) | 📂 **Datasets([ModelScope](https://www.modelscope.cn/datasets/GoodBaiBai88/M3D-Seg/summary)/[HuggingFace](https://huggingface.co/datasets/GoodBaiBai88/M3D-Seg))** |
+ | 🌟[**Quickstart**](https://www.modelscope.cn/models/yuxindu/SegVol/summary) | 📃 [**Paper**](https://arxiv.org/abs/2311.13385) | 🤗 [**Web Tool**](https://www.modelscope.cn/studios/YuxinDu/SegVol/summary) | 🤗 [**Weight Files**](https://huggingface.co/BAAI/SegVol/tree/main) | 📂 **Datasets([ModelScope](https://www.modelscope.cn/datasets/GoodBaiBai88/M3D-Seg/summary)/[HuggingFace](https://huggingface.co/datasets/GoodBaiBai88/M3D-Seg))** |
 </div>
 
 The SegVol is a universal and interactive model for volumetric medical image segmentation. SegVol accepts **point**, **box** and **text** prompt while output volumetric segmentation. By training on 90k unlabeled Computed Tomography (CT) volumes and 6k labeled CTs, this foundation model supports the segmentation of over 200 anatomical categories.
@@ -67,7 +67,7 @@ Links to the original datasets:
 |VerSe20|	https://osf.io/t98fz/|
 |WORD|	https://paperswithcode.com/dataset/word|
 
-## [Web Tool](https://huggingface.co/spaces/BAAI/SegVol) of SegVol 📽
+## [Web Tool](https://www.modelscope.cn/studios/YuxinDu/SegVol/summary) of SegVol 📽
 https://github.com/BAAI-DCAI/SegVol/assets/60123629/242a1578-e418-463c-9d53-a62eeb154c7d
 
 ## 🏆Internal Validation Performance(Dice Score)
@@ -114,7 +114,7 @@ We performed an external validation experiment using a novel annotated dataset f
 
 (2023.12.15) *The training code has been uploaded!*
 
-(2023.12.04) ***A web tool of SegVol is [here](https://huggingface.co/spaces/BAAI/SegVol)! Just enjoy it!*** 🔥🔥🔥
+(2023.12.04) ***A web tool of SegVol is [here](https://www.modelscope.cn/studios/YuxinDu/SegVol/summary)! Just enjoy it!*** 🔥🔥🔥
 
 (2023.11.28) *Our model and demo case have been open-source at [huggingface/BAAI/SegVol](https://huggingface.co/BAAI/SegVol/tree/main).* 🤗🤗
 
