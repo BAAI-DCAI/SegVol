@@ -5,6 +5,7 @@ import argparse
 from scipy import sparse
 from sklearn.model_selection import train_test_split
 import json
+join = os.path.join
 
 from monai.transforms import (
     AddChanneld,
@@ -37,31 +38,26 @@ print('dataset size ', len(image_list_all))
 # build dataset
 data_path_list_all = []
 for idx in range(len(image_list_all)):
-    img_path = os.path.join(args.image_dir, image_list_all[idx])
-    label_path = os.path.join(args.label_dir, label_list_all[idx])
+    image_path = join(args.image_dir, image_list_all[idx])
+    label_path = join(args.label_dir, label_list_all[idx])
     name = image_list_all[idx].split('.')[0]
-    info = (idx, name, img_path, label_path)
+    info = (idx, name, image_path, label_path)
     data_path_list_all.append(info)
 
 img_loader = Compose(
         [
             LoadImaged(keys=['image', 'label']),
             AddChanneld(keys=['image', 'label']),
-            Orientationd(keys=['image', 'label'], axcodes="RAS"),
+            # Orientationd(keys=['image', 'label'], axcodes="RAS"),
         ]
     )
 
 # save
-save_path = os.path.join(args.save_root, args.dataset_code)
-ct_save_path = os.path.join(save_path, 'ct')
-gt_save_path = os.path.join(save_path, 'gt')
-if not os.path.exists(ct_save_path):
-    os.makedirs(ct_save_path)
-if not os.path.exists(gt_save_path):
-    os.makedirs(gt_save_path)
+save_path = join(args.save_root, args.dataset_code)
+os.makedirs(save_path, exist_ok=True)
 
 # exist file:
-exist_file_list = os.listdir(ct_save_path)
+exist_file_list = os.listdir(save_path)
 print('exist_file_list ', exist_file_list)
 
 def normalize(ct_narray):
@@ -81,15 +77,16 @@ def normalize(ct_narray):
     return ct_narray
 
 def run(info):
-    idx, file_name, case_path, label_path = info
+    idx, file_name, image_path, label_path = info
+
     item = {}
-    if file_name + '.npy' in exist_file_list:
-        print(file_name + '.npy exist, skip')
+    if file_name in exist_file_list and len(os.listdir(join(save_path, file_name))) == 2:
+        print(file_name + ' exist, skip')
         return
     print('process ', idx, '---' ,file_name)
     # generate ct_voxel_ndarray
     item_load = {
-        'image' : case_path,
+        'image' : image_path,
         'label' : label_path,
     }
     item_load = img_loader(item_load)
@@ -128,16 +125,25 @@ def run(info):
 
     ############################
     print(file_name + ' ct gt <--> ', item['image'].shape, item['label'].shape)
-    np.save(os.path.join(ct_save_path, file_name + '.npy'), item['image'])
+    case_path = join(save_path, file_name)
+    os.makedirs(case_path, exist_ok=True)
+
+    np.save(join(case_path, 'image.npy'), item['image'])
     allmatrix_sp=sparse.csr_matrix(item['label'].reshape(item['label'].shape[0], -1))
-    sparse.save_npz(os.path.join(gt_save_path, file_name + '.' + str(item['label'].shape)), allmatrix_sp)
+    sparse.save_npz(join(case_path, 'mask_' + str(item['label'].shape)), allmatrix_sp)
     print(file_name + ' save done!')
 
 def generate_dataset_json(root_dir, output_file, test_ratio=0.2):
-    ct_dir = os.path.join(root_dir, 'ct')
-    gt_dir = os.path.join(root_dir, 'gt')
-    ct_paths = sorted([os.path.join(ct_dir, f) for f in sorted(os.listdir(ct_dir))])
-    gt_paths = sorted([os.path.join(gt_dir, f) for f in sorted(os.listdir(gt_dir))])
+    cases = os.listdir(root_dir)
+    ct_paths, gt_paths = [], []
+    for case_name in cases:
+        if '.json' in case_name:
+            raise ValueError('JSON file has already existed')
+        case_files = sorted(os.listdir(join(root_dir, case_name)))
+        ct_path = join(root_dir, case_name, case_files[0])
+        gt_path = join(root_dir, case_name, case_files[1])
+        ct_paths.append(ct_path)
+        gt_paths.append(gt_path)
 
     data = list(zip(ct_paths, gt_paths))
     train_data, val_data = train_test_split(data, test_size=test_ratio)
@@ -157,8 +163,8 @@ def generate_dataset_json(root_dir, output_file, test_ratio=0.2):
         'labels': labels,
         'numTraining': len(train_data),
         'numTest': len(val_data),
-        'training':   [{'image': ct_path, 'label': gt_path} for ct_path, gt_path in train_data],
-        'validation': [{'image': ct_path, 'label': gt_path} for ct_path, gt_path in val_data]
+        'train':   [{'image': ct_path, 'label': gt_path} for ct_path, gt_path in train_data],
+        'test': [{'image': ct_path, 'label': gt_path} for ct_path, gt_path in val_data]
     }
     with open(output_file, 'w') as f:
         print(f'{output_file} dump')
@@ -168,8 +174,8 @@ if __name__ == "__main__":
     with multiprocessing.Pool(processes=10) as pool:
         pool.map(run, data_path_list_all)
     print('Process Finished!')
-
+    
     generate_dataset_json(root_dir=save_path, 
-                          output_file=os.path.join(save_path, f'{args.dataset_code}.json'), 
+                          output_file=join(save_path, f'{args.dataset_code}.json'), 
                           test_ratio=args.test_ratio)
     print('Json Split Done!')

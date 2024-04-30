@@ -6,6 +6,7 @@ from felzenszwalb import _felzenszwalb_python
 from monai import transforms
 import multiprocessing
 import argparse
+join = os.path.join
 
 def set_parse():
     # %% set up parser
@@ -25,28 +26,14 @@ transform = transforms.Compose(
             transforms.Resized(keys=["image", "label"], spatial_size=args.spatial_size),
         ]
     )
+case_dir = join(args.datasets_root, args.dataset_code)
+case_list = sorted([item for item in os.listdir(case_dir) if '.json' not in item])
 
-data_path = os.path.join(args.datasets_root, args.dataset_code, 'ct')
-labels_path  = os.path.join(args.datasets_root, args.dataset_code, 'gt')
-segmented_image_save_path = os.path.join(args.datasets_root, args.dataset_code, 'fh_seg')
-if not os.path.exists(segmented_image_save_path):
-    os.makedirs(segmented_image_save_path)
-
-exist_file_list = os.listdir(segmented_image_save_path)
-print('exist_file_list ', exist_file_list)
-
-ct_list = sorted([item for item in os.listdir(data_path)])
-gt_list = sorted([item for item in os.listdir(labels_path)])
-assert len(ct_list) == len(gt_list), args.dataset_code + '---' + str(len(ct_list)) + '---' + str(len(gt_list))
 process_list = [(
-    f'{idx}/{len(ct_list)}',
-    ct_list[idx],
-    gt_list[idx],
-    data_path,
-    labels_path,
-    segmented_image_save_path,
-    ) for idx in range(len(ct_list))]
-assert len(ct_list) == len(gt_list)
+    f'{idx}/{len(case_list)}',
+    case_list[idx],
+    case_dir,
+    ) for idx in range(len(case_list))]
 
 def read_ct_gt(ct_file_path, gt_file_path):
     # ct
@@ -54,7 +41,7 @@ def read_ct_gt(ct_file_path, gt_file_path):
 
     # gt
     allmatrix_sp= sparse.load_npz(gt_file_path)
-    gt_shape = ast.literal_eval(gt_file_path.split('.')[-2])
+    gt_shape = ast.literal_eval(gt_file_path.split('.')[-2].split('_')[-1])
     gt_array=allmatrix_sp.toarray().reshape(gt_shape)
     item = {
         "image": img_array,
@@ -73,18 +60,18 @@ def combine_gt_fh(gt, fh_seg):
     return fh_seg
 
 def run(info):
-    info_str, ct_name, gt_name, data_path, labels_path, segmented_image_save_path = info
-    if ct_name + '.npy' in exist_file_list:
-        print(ct_name + '.npy exist, skip')
+    info_str, case_name, case_dir_path = info
+    save_file = join(case_dir_path, case_name, 'pseudo_mask.npy')
+
+    if os.path.exists(save_file):
+        print(case_name + ' pseudo_mask.npy exist, skip')
         return
     print('---> process ', info_str)
-    save_file = os.path.join(segmented_image_save_path, ct_name)
-    if os.path.exists(save_file):
-        print(save_file, ' exist now')
-        return
-    ct_path = os.path.join(data_path, ct_name)
-    gt_path = os.path.join(labels_path, gt_name)
-    assert gt_name.split('.(')[0] == ct_name.split('.npy')[0]
+
+    case_files = sorted(os.listdir(join(case_dir_path, case_name)))
+    ct_path = join(case_dir_path, case_name, case_files[0])
+    gt_path = join(case_dir_path, case_name, case_files[1])
+
     ct, gt = read_ct_gt(ct_path, gt_path)
     # felzenszwalb seg
     segmented_image = _felzenszwalb_python(ct.squeeze())

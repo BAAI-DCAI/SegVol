@@ -36,7 +36,7 @@ class UniversalDataset(Dataset):
         self.num_positive_extra_max = 10
         self.num_negative_extra_max = 10
         self.test_mode = test_mode
-        self.bbox_shift = 3 if test_mode else 0
+        self.bbox_shift = 10 if test_mode else 0
         print(organ_list)
         organ_list.remove('background')
         self.target_list = organ_list
@@ -48,8 +48,8 @@ class UniversalDataset(Dataset):
         # get path
         item_dict = self.data[idx]
         ct_path, gt_path = item_dict['image'], item_dict['label']
-        pseudo_seg_path = ct_path.replace('/ct', '/fh_seg')
-        gt_shape = ast.literal_eval(gt_path.split('.')[-2])
+        pseudo_seg_path = ct_path.replace('image.npy', 'pseudo_mask.npy')
+        gt_shape = ast.literal_eval(gt_path.split('.')[-2].split('_')[-1])
 
         # load data
         ct_array = np.load(ct_path)[0]
