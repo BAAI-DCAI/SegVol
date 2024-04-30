@@ -209,7 +209,7 @@ def build_concat_dataset(root_path, dataset_codes, transform):
         datalist_json = os.path.join(root_path, dataset_code, f'{dataset_code}.json')
         with open(datalist_json, 'r') as f:
             dataset_dict = json.load(f)
-        datalist = dataset_dict['training']
+        datalist = dataset_dict['train']
         universal_ds = UniversalDataset(data=datalist, transform=transform, test_mode=False, organ_list=list(dataset_dict['labels'].values()))
         concat_dataset.append(universal_ds)
         CombinationDataset_len += len(universal_ds)
