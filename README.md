@@ -1,8 +1,8 @@
 # SegVol: Universal and Interactive Volumetric Medical Image Segmentation
 <div align="center">
   
-  <img src="https://github.com/BAAI-DCAI/SegVol/assets/60123629/6f56fc35-1d75-468c-ab82-1e0cf47eb83e" width="85%" height="85%">
-  
+  <img src="https://github.com/BAAI-DCAI/SegVol/assets/60123629/d2b82996-7f2c-4de5-bfc8-8ccd115bfcdf" width="85%" height="85%">
+
  | 🌟**Quickstart([ModelScope](https://www.modelscope.cn/models/yuxindu/SegVol/summary) / [🤗HF](https://huggingface.co/BAAI/SegVol))** | 📃 [**Paper**](https://arxiv.org/abs/2311.13385) | [**Web Tool**](https://www.modelscope.cn/studios/YuxinDu/SegVol/summary) | 📂 **Datasets([ModelScope](https://www.modelscope.cn/datasets/GoodBaiBai88/M3D-Seg/summary)/[🤗HF](https://huggingface.co/datasets/GoodBaiBai88/M3D-Seg))** |
 </div>
 
