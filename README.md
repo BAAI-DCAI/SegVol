@@ -140,6 +140,15 @@ If you find this repository helpful, please consider citing:
   journal={arXiv preprint arXiv:2311.13385},
   year={2023}
 }
+@misc{bai2024m3dadvancing3dmedical,
+      title={M3D: Advancing 3D Medical Image Analysis with Multi-Modal Large Language Models}, 
+      author={Fan Bai and Yuxin Du and Tiejun Huang and Max Q. -H. Meng and Bo Zhao},
+      year={2024},
+      eprint={2404.00578},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2404.00578}, 
+}
 ```
 
 ## Acknowledgement
