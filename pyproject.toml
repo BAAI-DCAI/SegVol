@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 [project]
 name = "segment_anything_volumetric"
 version = "0.0.1"
-description = "nDPId consumer implementation"
+description = "SegVol: Universal and Interactive Volumetric Medical Image Segmentation"
 readme = "README.md"
 license = { file="LICENSE" }
 requires-python = ">=3.6"
