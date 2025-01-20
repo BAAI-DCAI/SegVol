@@ -21,6 +21,7 @@ After that, SegVol is fine-tuning on AbdomenAtlas with 8 x A800 GPUs.
 Download [testing script and model weights for AbdomenAtlas1.1](https://drive.google.com/file/d/1qqUs3Jkkam4RpP7b_kv7dUdB-wrY8GcL/view?usp=drive_link).
 
 ### Model testing
+Download [testing script and model weights for AbdomenAtlas1.1](https://drive.google.com/file/d/1qqUs3Jkkam4RpP7b_kv7dUdB-wrY8GcL/view?usp=drive_link) first.
 #### Install requirements:
 
 ```shell
