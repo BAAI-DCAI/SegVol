@@ -8,6 +8,8 @@
 
 🎉🎉🎉**Our paper has been accepted at NeurIPS 2024 as a spotlight!**
 
+[**SegVol repo for CVPR SegFM**](https://github.com/Yuxin-Du-Lab/SegVol-for-SegFM)
+
 The SegVol is a universal and interactive model for volumetric medical image segmentation. SegVol accepts **point**, **box** and **text** prompt while output volumetric segmentation. By training on 90k unlabeled Computed Tomography (CT) volumes and 6k labeled CTs, this foundation model supports the segmentation of over 200 anatomical categories.
 
 We have released SegVol's **inference code**, **training code**, **model params** and **ViT pre-training params** (pre-training is performed over 2,000 epochs on 96k  CTs). 
