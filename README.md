@@ -152,8 +152,11 @@ If you find this repository helpful, please consider citing:
       url={https://arxiv.org/abs/2404.00578}, 
 }
 ```
-
+  
 ## Acknowledgement
+
+This work is supported by the National Science and Technology Major Project (No. 2022ZD0116314).
+
 Thanks for the following amazing works:
 
 [HuggingFace](https://huggingface.co/).
